@@ -151,6 +151,8 @@ class AdoptTissue(Resource):
                 if comment.id == comment_id:
                     eye.comments[cnt].tissue = True
                     eye.save()
+                    cnt = int(eye.author.tissue_count) + 1
+                    eye.author.update(tissue_count=cnt)
                     break
                 cnt += 1
 

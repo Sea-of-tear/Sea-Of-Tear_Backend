@@ -5,6 +5,7 @@ from flask_restful import Api, abort
 from app.views.sample import Sample
 from app.views.user import *
 from app.views.eye import *
+from app.views.additions import *
 
 
 def json_required(*required_keys):
@@ -45,3 +46,6 @@ class ViewInsert(object):
         api.add_resource(PostComment, '/comment/<eye_id>')
         api.add_resource(PostTear, '/tear/<eye_id>')
         api.add_resource(AdoptTissue, '/tissue/<eye_id>/<comment_id>')
+
+        api.add_resource(CheerRank, '/rank')
+        api.add_resource(PopularEye, '/populars')
