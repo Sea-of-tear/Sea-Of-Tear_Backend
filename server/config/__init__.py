@@ -5,7 +5,7 @@ import os
 class Config(object):
     SERVICE_NAME = '15th AppJam'
 
-    PORT = 8000
+    PORT = 80
     DOMAIN = None
 
     SECRET_KEY = os.getenv('SECRET_KEY', 'ld02ifr9rj92ndi3n2vj9eo20')

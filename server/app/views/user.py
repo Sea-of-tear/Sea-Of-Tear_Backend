@@ -4,11 +4,9 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 
 from app.models.user import UserModel
-# from app.views import json_required
 
 
 class Signup(Resource):
-    # @json_required('id', 'pw', 'email', 'nickname')
     def post(self):
         id = request.form['id']
         pw = request.form['pw']
@@ -24,7 +22,6 @@ class Signup(Resource):
 
 
 class Login(Resource):
-    # @json_required('id', 'pw')
     def post(self):
         id = request.form['id']
         pw = request.form['pw']
