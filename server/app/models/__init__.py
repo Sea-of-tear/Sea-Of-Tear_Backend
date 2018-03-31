@@ -9,4 +9,4 @@ class ModelInsert(object):
     def init_app(self, app):
         settings = app.config['MONGODB_SETTINGS']
 
-        connect(settings['db'], settings['HOST'])
+        connect(settings['db'], settings['HOST'], settings['PORT'])
