@@ -29,7 +29,7 @@ class EyeModel(Document):
         required=True
     )
 
-    # background_image = ImageField(required=True)
+    background_image = IntField(required=True)
     category = IntField(required=True)
 
     comments = ListField(

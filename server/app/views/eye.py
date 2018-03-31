@@ -16,7 +16,7 @@ class PostEye(Resource):
 
         title = request.form['title']
         description = request.form['description']
-        background_image = request.files['background']
+        background_image = request.form['background']
         category = request.form['category']
 
         EyeModel(
