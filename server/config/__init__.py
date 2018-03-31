@@ -3,7 +3,7 @@ import os
 
 
 class Config(object):
-    SERVICE_NAME = '15th AppJam'
+    SERVICE_NAME = 'Sea_Of_Tear'
 
     PORT = 80
     DOMAIN = None
