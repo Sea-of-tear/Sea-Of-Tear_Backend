@@ -34,9 +34,7 @@ class UserModel(Document):
         default=" "
     )
 
-    profile_image = ImageField(
-
-    )
+    # profile_image = ImageField()
 
     # =======
 
