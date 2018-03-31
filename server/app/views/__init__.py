@@ -43,3 +43,5 @@ class ViewInsert(object):
         api.add_resource(EyesList, '/eye-list')
         api.add_resource(ViewEye, '/eye/<eye_id>')
         api.add_resource(PostComment, '/comment/<eye_id>')
+        api.add_resource(PostTear, '/tear/<eye_id>')
+        api.add_resource(AdoptTissue, '/tissue/<eye_id>/<comment_id>')

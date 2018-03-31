@@ -137,3 +137,21 @@ class PostTear(Resource):
         owner.update(get_tears_count=get_tears_count)
 
         return Response('', 201)
+
+
+class AdoptTissue(Resource):
+    @jwt_required
+    def post(self, eye_id, comment_id):
+        eye = EyeModel.objects(id=eye_id).first()
+
+        cnt = 0
+
+        if get_jwt_identity() == eye.author.id:
+            for comment in eye.comments:
+                if comment.id == comment_id:
+                    eye.comments[cnt].tissue = True
+                    eye.save()
+                    break
+                cnt += 1
+
+        return Response('', 201)
