@@ -7,6 +7,7 @@ class UserModel(Document):
         'collection': 'user'
     }
 
+    # 회원가입 시 입력
     id = StringField(
         required=True,
         primary_key=True
@@ -20,6 +21,9 @@ class UserModel(Document):
         required=True
     )
 
+    # =======
+
+    # 정보 설정 시 입력
     nickname = StringField(
         required=True,
         default=""
@@ -30,6 +34,12 @@ class UserModel(Document):
         default=" "
     )
 
+    profile_image = ImageField(
+
+    )
+
+    # =======
+
     account_time = DateTimeField(
         default=datetime.now()
     )
@@ -38,6 +48,6 @@ class UserModel(Document):
 
     )
 
-    tears_count = IntField(
+    get_tears_count = IntField(
 
     )

@@ -4,6 +4,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 
 from app.models.user import UserModel
+from app.models.eye import EyeModel
 
 
 class Signup(Resource):
@@ -32,3 +33,39 @@ class Login(Resource):
             }
         else:
             return Response('', 401)
+
+
+class MyPage(Resource):
+    @jwt_required
+    def post(self):
+        user = UserModel.objects(id=get_jwt_identity()).first()
+
+        if not user:
+            return Response('user not founds', 401)
+
+        nickname = request.form['nickname']
+        introduction = request.form['introduction']
+        # profile_image = request.form['profile_image']
+
+        user.update(nickname=nickname, introduction=introduction)
+
+        return Response('', 201)
+
+    @jwt_required
+    def get(self):
+        user = UserModel.objects(id=get_jwt_identity()).first()
+
+        if not user:
+            return Response('user not founds', 401)
+
+        return {
+            'nickname': user.nickname,
+            'introduction': user.introduction,
+            'eyes': [{
+                'title': eye.title,
+                'comment_count': eye.comment_count,
+                'tear_count': eye.tear_count
+            } for eye in EyeModel.objects(author=user)],
+            'tissue_count': user.tissue_count,
+            'get_tears_count': user.get_tears_count
+        }, 200

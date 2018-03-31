@@ -12,7 +12,7 @@ class PostEye(Resource):
         user = UserModel.objects(id=get_jwt_identity()).first()
 
         if not user:
-            return Response('', 401)
+            return Response('user not found', 401)
 
         title = request.form['title']
         description = request.form['description']
