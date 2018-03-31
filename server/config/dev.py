@@ -10,7 +10,7 @@ class DevConfig(Config):
     DEBUG = True
 
     MONGODB_SETTINGS = {
-        'host': HOST,
-        'port': 27017,
+        'HOST': HOST,
+        'PORT': 27017,
         'db': Config.SERVICE_NAME
     }
