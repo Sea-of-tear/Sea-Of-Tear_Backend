@@ -11,12 +11,11 @@ class Signup(Resource):
         id = request.form['id']
         pw = request.form['pw']
         email = request.form['email']
-        nickname = request.json['nickname']
 
         if UserModel.objects(id=id):
             return Response('id duplicate', 204)
 
-        UserModel(id=id, pw=pw, email=email, nickname=nickname).save()
+        UserModel(id=id, pw=pw, email=email).save()
 
         return Response('signup success', 201)
 
