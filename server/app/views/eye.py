@@ -110,3 +110,30 @@ class PostComment(Resource):
         eye.update(comment_count=cnt)
 
         return Response('', 201)
+
+
+class PostTear(Resource):
+    @jwt_required
+    def post(self, eye_id):
+        """
+        특정 eye 에 눈물 표시
+        """
+        user = UserModel.objects(id=get_jwt_identity()).first()
+
+        if not user:
+            return Response('user not found', 401)
+
+        eye = EyeModel.objects(id=eye_id).first()
+
+        if not eye:
+            Response('', 204)
+
+        tear_cnt = int(eye.tear_count) + 1
+        eye.update(tear_count=tear_cnt)
+
+        owner = eye.author
+
+        get_tears_count = int(owner.get_tears_count) + 1
+        owner.update(get_tears_count=get_tears_count)
+
+        return Response('', 201)

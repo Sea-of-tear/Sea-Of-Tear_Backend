@@ -3,8 +3,8 @@ from flask import request
 from flask_restful import Api, abort
 
 from app.views.sample import Sample
-from app.views.user import Signup, Login, MyPage
-from app.views.eye import PostEye, EyesList, ViewEye
+from app.views.user import *
+from app.views.eye import *
 
 
 def json_required(*required_keys):
@@ -42,3 +42,4 @@ class ViewInsert(object):
         api.add_resource(PostEye, '/post-eye')
         api.add_resource(EyesList, '/eye-list')
         api.add_resource(ViewEye, '/eye/<eye_id>')
+        api.add_resource(PostComment, '/comment/<eye_id>')
