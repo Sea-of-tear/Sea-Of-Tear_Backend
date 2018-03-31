@@ -15,7 +15,7 @@ class Comment(EmbeddedDocument):
     )
 
 
-class Eye(Document):
+class EyeModel(Document):
     title = StringField(required=True, max_length=25)
     description = StringField(required=True)
     author = ReferenceField(
@@ -28,8 +28,7 @@ class Eye(Document):
 
     comments = ListField(
         EmbeddedDocumentField(
-            document_type=Comment,
-            required=True
+            document_type=Comment
         )
     )
 
