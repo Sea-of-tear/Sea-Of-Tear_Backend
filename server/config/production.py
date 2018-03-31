@@ -10,7 +10,7 @@ class ProductionConfig(Config):
         Config.SWAGGER['host'] = '{}:{}'.format(HOST, Config.PORT)
 
     MONGODB_SETTINGS = {
-        'HOST': HOST,
+        'HOST': 'localhost',
         'PORT': 27017,
         'db': Config.SERVICE_NAME
     }
