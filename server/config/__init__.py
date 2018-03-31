@@ -5,7 +5,7 @@ import os
 class Config(object):
     SERVICE_NAME = 'Sea_Of_Tear'
 
-    PORT = 80
+    PORT = 8080
     DOMAIN = None
 
     SECRET_KEY = os.getenv('SECRET_KEY', 'ld02ifr9rj92ndi3n2vj9eo20')
