@@ -43,9 +43,9 @@ class UserModel(Document):
     )
 
     tissue_count = IntField(
-
+        default=0
     )
 
     get_tears_count = IntField(
-
+        default=0
     )

@@ -42,5 +42,5 @@ class EyeModel(Document):
         default=datetime.now()
     )
 
-    comment_count = IntField()
-    tear_count = IntField()
+    comment_count = IntField(default=0)
+    tear_count = IntField(default=0)

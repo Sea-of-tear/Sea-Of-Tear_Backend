@@ -3,7 +3,7 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from app.models.user import UserModel
-from app.models.eye import EyeModel
+from app.models.eye import EyeModel, Comment
 
 
 class PostEye(Resource):
@@ -83,3 +83,30 @@ class ViewEye(Resource):
             'comment_count': eye.comment_count,
             'tear_count': eye.tear_count
         }, 200
+
+
+class PostComment(Resource):
+    @jwt_required
+    def post(self, eye_id):
+        """
+        특정 eye 에 위로글 달기
+        """
+        user = UserModel.objects(id=get_jwt_identity()).first()
+
+        if not user:
+            return Response('user not found', 401)
+
+        eye = EyeModel.objects(id=eye_id).first()
+
+        if not eye:
+            Response('', 204)
+
+        description = request.form['description']
+
+        eye.comments.append(Comment(author=user, description=description))
+        eye.save()
+
+        cnt = int(eye.comment_count) + 1
+        eye.update(comment_count=cnt)
+
+        return Response('', 201)
