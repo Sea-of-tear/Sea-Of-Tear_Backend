@@ -35,13 +35,13 @@ class ViewInsert(object):
     def init_app(self, app):
         api = Api(app)
 
-        api.add_resource(Sample, '/')
-        api.add_resource(Signup, '/signup')
-        api.add_resource(Login, '/login')
-        api.add_resource(MyPage, '/my-page')
+        api.add_resource(Sample, '/') #
+        api.add_resource(Signup, '/signup') #
+        api.add_resource(Login, '/login') #
+        api.add_resource(MyPage, '/my-page') # 0.5
 
-        api.add_resource(PostEye, '/post-eye')
-        api.add_resource(EyesList, '/eye-list')
+        api.add_resource(PostEye, '/post-eye') #
+        api.add_resource(EyesList, '/eye-list') #
         api.add_resource(ViewEye, '/eye/<eye_id>')
         api.add_resource(PostComment, '/comment/<eye_id>')
         api.add_resource(PostTear, '/tear/<eye_id>')

@@ -79,7 +79,7 @@ class ViewEye(Resource):
                 'description': comment.description,
                 'tissue': comment.tissue
             } for comment in eye.comments],
-            'posting_time': eye.posting_time,
+            # 'posting_time': eye.posting_time,
             'comment_count': eye.comment_count,
             'tear_count': eye.tear_count
         }, 200
