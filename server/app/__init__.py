@@ -11,7 +11,7 @@ from config.dev import DevConfig
 from config.production import ProductionConfig
 
 
-def create_app(dev=True):
+def create_app(dev=False):
     app_ = Flask(__name__)
     app_.config.from_object(DevConfig if dev else ProductionConfig)
 
